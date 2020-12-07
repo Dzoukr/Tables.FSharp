@@ -33,8 +33,8 @@ module Tools =
             DotNet.exec (DotNet.Options.withWorkingDirectory workingDir) cmd ""
         if result.ExitCode <> 0 then failwithf "'dotnet %s' failed in %s" cmd workingDir
 
-let librarySrcPath = "src" </> "Azure.Data.Tables.FSharp"
-let testsSrcPath = "tests" </> "Azure.Data.Tables.FSharp.Tests"
+let librarySrcPath = "src" </> "Tables.FSharp"
+let testsSrcPath = "tests" </> "Tables.FSharp.Tests"
 
 Target.create "Clean" (fun _ ->
     [

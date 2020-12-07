@@ -16,7 +16,7 @@
         <Compile Include="Program.fs"/>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Azure.Data.Tables.FSharp\Azure.Data.Tables.FSharp.fsproj"/>
+        <ProjectReference Include="..\..\src\Tables.FSharp\Tables.FSharp.fsproj"/>
     </ItemGroup>
     <Import Project="..\..\.paket\Paket.Restore.targets"/>
 </Project>

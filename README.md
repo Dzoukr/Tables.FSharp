@@ -1,4 +1,4 @@
-﻿# Azure.Data.Tables.FSharp [![NuGet](https://img.shields.io/nuget/v/Azure.Data.Tables.FSharp.svg?style=flat-square)](https://www.nuget.org/packages/Azure.Data.Tables.FSharp/)
+﻿# Tables.FSharp [![NuGet](https://img.shields.io/nuget/v/Tables.FSharp.svg?style=flat-square)](https://www.nuget.org/packages/Tables.FSharp/)
 
 <p align="center">
 <img src="https://github.com/Dzoukr/Azure.Data.Tables.FSharp/raw/master/logo.png" width="150px"/>
@@ -9,11 +9,11 @@ Lightweight F# extension for the latest [Azure.Data.Tables SDK](https://docs.mic
 ## Installation
 If you want to install this package manually, use usual NuGet package command
 
-    Install-Package Azure.Data.Tables.FSharp
+    Install-Package Tables.FSharp
 
 or using [Paket](http://fsprojects.github.io/Paket/getting-started.html)
 
-    paket add Azure.Data.Tables.FSharp
+    paket add Tables.FSharp
 
  ## Querying
 

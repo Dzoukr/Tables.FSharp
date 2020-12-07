@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Azure.Data.Tables.FSharp", "src\Azure.Data.Tables.FSharp\Azure.Data.Tables.FSharp.fsproj", "{1546C8B4-6F6B-4641-8459-8E9BB2ACD638}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tables.FSharp", "src\Tables.FSharp\Tables.FSharp.fsproj", "{1546C8B4-6F6B-4641-8459-8E9BB2ACD638}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Azure.Data.Tables.FSharp.Tests", "tests\Azure.Data.Tables.FSharp.Tests\Azure.Data.Tables.FSharp.Tests.fsproj", "{7F0F4DB1-CDE9-4561-8D7D-CEB8D01F7984}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tables.FSharp.Tests", "tests\Tables.FSharp.Tests\Tables.FSharp.Tests.fsproj", "{7F0F4DB1-CDE9-4561-8D7D-CEB8D01F7984}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
