@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Azure.Data.Tables.FSharp", "src\Azure.Data.Tables.FSharp\Azure.Data.Tables.FSharp.fsproj", "{1546C8B4-6F6B-4641-8459-8E9BB2ACD638}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Azure.Data.Tables.FSharp.Tests", "tests\Azure.Data.Tables.FSharp.Tests\Azure.Data.Tables.FSharp.Tests.fsproj", "{7F0F4DB1-CDE9-4561-8D7D-CEB8D01F7984}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1546C8B4-6F6B-4641-8459-8E9BB2ACD638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1546C8B4-6F6B-4641-8459-8E9BB2ACD638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1546C8B4-6F6B-4641-8459-8E9BB2ACD638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1546C8B4-6F6B-4641-8459-8E9BB2ACD638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0F4DB1-CDE9-4561-8D7D-CEB8D01F7984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0F4DB1-CDE9-4561-8D7D-CEB8D01F7984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0F4DB1-CDE9-4561-8D7D-CEB8D01F7984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0F4DB1-CDE9-4561-8D7D-CEB8D01F7984}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
