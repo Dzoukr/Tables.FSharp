@@ -5,7 +5,7 @@ open Azure.Data.Tables
 open Azure.Data.Tables.FSharp
 open Expecto
 
-let tests (client:TableClient) = testList "Query" [
+let queryFilterTests (client:TableClient) = testList "Filter" [
     test "Filters by Guid" {
         let ent =
             eq "GuidVal" Guid.Empty
@@ -14,6 +14,7 @@ let tests (client:TableClient) = testList "Query" [
 
         Expect.equal Guid.Empty (ent.Head.GuidVal) ""
         Expect.equal 1 ent.Length ""
+        Expect.equal "Val 10" ent.Head.StringVal ""
     }
 
     test "Filters by String" {
@@ -88,4 +89,50 @@ let tests (client:TableClient) = testList "Query" [
         Expect.equal 9 ent.Length ""
         Expect.equal false (ent |> List.exists (fun x -> x.Int64Val = 5L)) ""
     }
+]
+
+let queryComputationExpressionstests (client:TableClient) = testList "CE" [
+    test "Filter works" {
+        let ent =
+            tableQuery {
+                filter (eq "GuidVal" Guid.Empty)
+            }
+            |> client.Query<Data.TestEntity>
+            |> Seq.toList
+
+        Expect.equal Guid.Empty (ent.Head.GuidVal) ""
+        Expect.equal 1 ent.Length ""
+        Expect.equal "Val 10" ent.Head.StringVal ""
+    }
+
+    test "MaxPerPage works" {
+        let pages =
+            tableQuery {
+                maxPerPage 5
+            }
+            |> client.Query<Data.TestEntity>
+            |> (fun x -> x.AsPages())
+            |> Seq.toList
+
+        Expect.equal pages.Head.Values.Count 5 ""
+        Expect.equal pages.Length 2 ""
+    }
+
+    test "Select works" {
+        let ent =
+            tableQuery {
+                select [ "DoubleVal" ]
+                filter (rk "row_10")
+            }
+            |> client.Query<Data.TestEntity>
+            |> Seq.toList
+
+        Expect.equal ent.Head.DoubleVal 15. ""
+        Expect.isNull ent.Head.StringVal ""
+    }
+]
+
+let tests client = testList "Query" [
+    queryFilterTests client
+    queryComputationExpressionstests client
 ]

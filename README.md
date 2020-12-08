@@ -27,15 +27,16 @@ let manualQuery = sprintf "(StringValue eq '%s') or not ((DateValue ge datetime'
 let results = table.Query<MyEntity>(manualQuery)
 ```
 
-Using this library, new overloads of `Query` and `QueryAsync` are available to accept `Filter` value instead of query string. This `Filter` is transformed into valid and supported OData format:
+Using this library, new overloads of `Query` and `QueryAsync` are available to accept `Filter` value instead of query string. This `Filter` is transformed into valid and supported OData format, including date conversions and correct data formatting:
 
 ```f#
 open Azure.Data.Tables
 open Azure.Data.Tables.FSharp
 
 let tableClient = TableClient("connString", "MyTable")
+
 let results =
-    (eq "StringValue" "Roman" * !! (ge "DateValue" now + lt "IntValue" 42))
+    (eq "StringValue" "Roman" * !! (ge "DateValue" DateTimeOffset.Now + lt "IntValue" 42))
     |> tableClient.Query<MyEntity>
 
 ```
@@ -46,10 +47,20 @@ To inspect transformed output of `Filter` value you can use `FilterConverter` mo
 open Azure.Data.Tables.FSharp
 
 let oDataString =
-    (eq "StringValue" "Roman" * !! (ge "DateValue" now + lt "IntValue" 42))
+    (eq "StringValue" "Roman" * !! (ge "DateValue" DateTimeOffset.Now + lt "IntValue" 42))
     |> FilterConverter.toQuery
+```
+
+If you need to comfortably pass more arguments into `Query` / `QueryAsync` like columns selection or paging, the computation expression `tableQuery` is here for you:
+
+```f#
+tableQuery {
+    filter (eq "GuidVal" Guid.Empty)
+    select [ "ColumnOne"; "ColumnTwo" ]
+    maxPerPage 5 // take only 5 rows per page
+} |> tableClient.Query<MyEntity>
 ```
 
 ## CRUD Operations
 
-`Azure.Data.Tables` is currently in beta3 and first API looks promising - maybe now wrapper around that won't be necessary. See [the examples](https://github.com/Azure/azure-sdk-for-net/tree/Azure.Data.Tables_3.0.0-beta.3/sdk/tables/Azure.Data.Tables#create-the-table-client).
+`Azure.Data.Tables` is currently in beta3 and first API looks quite promising - maybe no wrapper around that won't be necessary at all. See [the examples](https://github.com/Azure/azure-sdk-for-net/tree/Azure.Data.Tables_3.0.0-beta.3/sdk/tables/Azure.Data.Tables#create-the-table-client). I'll keep monitoring progress and will add more wrappers if needed.

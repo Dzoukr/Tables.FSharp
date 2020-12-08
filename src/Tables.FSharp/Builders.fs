@@ -1,6 +1,33 @@
 ﻿[<AutoOpen>]
 module Azure.Data.Tables.FSharp.Builders
 
+type TableQueryBuilder() =
+    member __.Yield _ =
+        {
+            Filter = Empty
+            MaxPerPage = None
+            Select = []
+            CancellationToken = System.Threading.CancellationToken.None
+        } : TableQuery
+
+    /// Sets the FILTER for query
+    [<CustomOperation "filter">]
+    member __.Filter (state:TableQuery, value) = { state with Filter = value }
+
+    /// Sets the MAXPERPAGE for query
+    [<CustomOperation "maxPerPage">]
+    member __.MaxPerPage (state:TableQuery, value) = { state with MaxPerPage = Some value }
+
+    /// Sets the SELECT columns for query
+    [<CustomOperation "select">]
+    member __.Select (state:TableQuery, value) = { state with Select = value }
+
+    /// Sets the CANCELLATION TOKEN for query
+    [<CustomOperation "cancellationToken">]
+    member __.CancellationToken (state:TableQuery, value) = { state with CancellationToken = value }
+
+let tableQuery = TableQueryBuilder()
+
 /// Creates FILTER condition for column
 let column name whereComp = Filter.Column(name, whereComp)
 /// FILTER column value equals to
@@ -16,6 +43,6 @@ let ge name (o:obj) = column name (Ge o)
 /// FILTER column value lower/equals than
 let le name (o:obj) = column name (Le o)
 /// FILTER PK equals
-let pk (value:string) = column "PartitionKey" (Eq value)
+let pk (value:string) = column Keys.PartitionKey (Eq value)
 /// FILTER RK equals
-let rk (value:string) = column "RowKey" (Eq value)
+let rk (value:string) = column Keys.RowKey (Eq value)

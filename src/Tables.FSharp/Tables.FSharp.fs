@@ -23,3 +23,14 @@ type Filter =
     static member (+) (a, b) = Binary(a, And, b)
     static member (*) (a, b) = Binary(a, Or, b)
     static member (!!) a = Unary (Not, a)
+
+module Keys =
+    let [<Literal>] PartitionKey = "PartitionKey"
+    let [<Literal>] RowKey = "RowKey"
+
+type TableQuery = {
+    Filter : Filter
+    MaxPerPage : int option
+    Select : string list
+    CancellationToken : System.Threading.CancellationToken
+}
