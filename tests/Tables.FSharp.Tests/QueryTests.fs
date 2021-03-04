@@ -91,7 +91,7 @@ let queryFilterTests (client:TableClient) = testList "Filter" [
     }
 ]
 
-let queryComputationExpressionstests (client:TableClient) = testList "CE" [
+let queryComputationExpressionsTests (client:TableClient) = testList "CE" [
     test "Filter works" {
         let ent =
             tableQuery {
@@ -134,5 +134,5 @@ let queryComputationExpressionstests (client:TableClient) = testList "CE" [
 
 let tests client = testList "Query" [
     queryFilterTests client
-    queryComputationExpressionstests client
+    queryComputationExpressionsTests client
 ]

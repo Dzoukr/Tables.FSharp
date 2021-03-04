@@ -34,3 +34,10 @@ type TableQuery = {
     Select : string list
     CancellationToken : System.Threading.CancellationToken
 }
+with
+    static member Empty = {
+        Filter = Empty
+        MaxPerPage = None
+        Select = []
+        CancellationToken = System.Threading.CancellationToken.None
+    }

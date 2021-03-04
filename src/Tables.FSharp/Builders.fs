@@ -2,13 +2,7 @@
 module Azure.Data.Tables.FSharp.Builders
 
 type TableQueryBuilder() =
-    member __.Yield _ =
-        {
-            Filter = Empty
-            MaxPerPage = None
-            Select = []
-            CancellationToken = System.Threading.CancellationToken.None
-        } : TableQuery
+    member __.Yield _ = TableQuery.Empty
 
     /// Sets the FILTER for query
     [<CustomOperation "filter">]
