@@ -4,7 +4,7 @@
 <img src="https://github.com/Dzoukr/Azure.Data.Tables.FSharp/raw/master/logo.png" width="150px"/>
 </p>
 
-Lightweight F# extension for the latest [Azure.Data.Tables SDK](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/Data.Tables-readme-pre) (currently in beta3)
+Lightweight F# extension for the latest [Azure.Data.Tables SDK](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/Data.Tables-readme-pre)
 
 ## Installation
 If you want to install this package manually, use usual NuGet package command
