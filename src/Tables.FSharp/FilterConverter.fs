@@ -55,7 +55,7 @@ module private StringValue =
 
     let forLong (value:int64) =
         Convert.ToString(value, formatProvider)
-        |> sprintf "%sL"
+        |> sprintf "'%s'"
 
     let forAny (v:obj) = Convert.ToString(v, formatProvider) |> sprintf "'%s'"
 
@@ -73,15 +73,20 @@ let private getColumnComparison field comp =
         | v -> v |> StringValue.forAny
     sprintf "%s %s %s" field (ColumnComparison.comparison comp) stringValue
 
-let rec toQuery (f:Filter) =
+let rec private _toQuery (f:Filter) =
     match f with
     | Empty -> ""
     | Column (field, comp) -> getColumnComparison field comp
     | Binary(w1, op, w2) ->
-        match toQuery w1, toQuery w2 with
+        match _toQuery w1, _toQuery w2 with
         | "", fq | fq , "" -> fq
         | fq1, fq2 -> sprintf "(%s) %s %s" fq1 (BinaryOperation.operation op) fq2
     | Unary (op, w) ->
-        match toQuery w with
+        match _toQuery w with
         | "" -> ""
         | v -> sprintf "%s (%s)" (UnaryOperation.operation op) v
+
+let toQuery (f:Filter) =
+    match f |> _toQuery with
+    | "" -> null
+    | x -> x
