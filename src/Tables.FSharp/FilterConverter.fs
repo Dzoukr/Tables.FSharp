@@ -55,7 +55,7 @@ module private StringValue =
 
     let forLong (value:int64) =
         Convert.ToString(value, formatProvider)
-        |> sprintf "'%s'"
+        |> sprintf "%sL"
 
     let forAny (v:obj) = Convert.ToString(v, formatProvider) |> sprintf "'%s'"
 
