@@ -72,7 +72,7 @@ let queryFilterTests (client:TableClient) = testList "Filter" [
 
     test "Filters by Int64" {
         let ent =
-            eq "Int64Val" 5L
+            eq "Int64Val" 5_000_000_000_000L
             |> client.Query<Data.TestEntity>
             |> Seq.toList
 
@@ -82,7 +82,7 @@ let queryFilterTests (client:TableClient) = testList "Filter" [
 
     test "Unary filter works" {
         let ent =
-            !! (eq "Int64Val" 5L)
+            !! (eq "Int64Val" 5_000_000_000_000L)
             |> client.Query<Data.TestEntity>
             |> Seq.toList
 

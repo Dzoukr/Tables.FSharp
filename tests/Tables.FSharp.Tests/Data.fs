@@ -32,13 +32,13 @@ let getEntity id (i:int) =
     e.DateVal <- DateTimeOffset(now.Year, now.Month, now.Day, i, 0, 0, TimeSpan.Zero)
     e.DoubleVal <- float i * 1.5
     e.IntVal <- i
-    e.Int64Val <- int64 i
+    e.Int64Val <- int64 i * 1_000_000_000_000L
     e
 
 let prepareData (client:TableClient) =
     client.CreateIfNotExists() |> ignore
-    client.Delete() |> ignore
-    client.CreateIfNotExists() |> ignore
+    for e in client.Query<TableEntity>() do
+        client.DeleteEntity(e.PartitionKey, e.RowKey) |> ignore<Response>
     [1..9]
     |> List.map (getEntity <| Guid.NewGuid())
     |> List.iter (client.UpsertEntity >> ignore)
