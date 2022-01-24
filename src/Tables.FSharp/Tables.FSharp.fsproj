@@ -10,8 +10,8 @@
         <PackageIconUrl>https://github.com/Dzoukr/Tables.FSharp/raw/master/logo.png</PackageIconUrl>
         <PackageTags>fsharp;azure;tables;storage;database</PackageTags>
         <Authors>Roman Provazník</Authors>
-        <Version>1.0.0</Version>
-        <PackageReleaseNotes>Releasing v1.0</PackageReleaseNotes>
+        <Version>1.1.0</Version>
+        <PackageReleaseNotes>Format int64 comparison as OData long</PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Tables.FSharp.fs" />
