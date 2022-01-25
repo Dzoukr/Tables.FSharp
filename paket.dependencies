@@ -2,10 +2,19 @@ source https://api.nuget.org/v3/index.json
 framework: net6.0, netstandard2.0
 storage: none
 
-nuget FSharp.Core = 4.3.1
-nuget Azure.Data.Tables
-nuget Expecto
-nuget Microsoft.Extensions.Configuration.Json
+group Library
+    source https://api.nuget.org/v3/index.json
+    storage: none
+    nuget FSharp.Core = 4.3.1
+    nuget Azure.Data.Tables
+
+group Tests
+    source https://api.nuget.org/v3/index.json
+    framework: net6.0
+    storage: none
+    nuget FSharp.Core
+    nuget Expecto
+    nuget Microsoft.Extensions.Configuration.Json
 
 group Build
     source https://api.nuget.org/v3/index.json
