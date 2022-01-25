@@ -6,7 +6,7 @@ group Library
     source https://api.nuget.org/v3/index.json
     storage: none
     nuget FSharp.Core = 4.3.1
-    nuget Azure.Data.Tables
+    nuget Azure.Data.Tables !~> 12.3 lowest_matching: true
 
 group Tests
     source https://api.nuget.org/v3/index.json
