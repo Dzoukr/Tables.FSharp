@@ -1,3 +1,4 @@
-FSharp.Core
-Expecto
-Microsoft.Extensions.Configuration.Json
+group Tests
+    FSharp.Core
+    Expecto
+    Microsoft.Extensions.Configuration.Json
